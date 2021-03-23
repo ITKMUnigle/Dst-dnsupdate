@@ -1,4 +1,4 @@
-# 饥荒Dns更新脚本方便大家获取dns，直接解析到klei地址降低延迟
+# 饥荒Dns更新脚本方便大家获取dns，直接解析到klei地址
 # The DNS update script is convenient for you to obtain DNS and directly resolve to Klei address to reduce the delay
 
 ## 环境 Ubuntu18.04(已经测试)
