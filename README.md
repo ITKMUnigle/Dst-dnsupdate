@@ -19,4 +19,4 @@
 - sudo ./Getdns.sh //执行文件 execute file
 
 本人自己编写的可自动更新dns的脚本
-如果觉得号的话，请给我一个star，谢谢大家
+如果觉得好的话，请给我一个star，谢谢大家
