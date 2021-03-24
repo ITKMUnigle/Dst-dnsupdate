@@ -4,6 +4,9 @@
 ## 环境 Ubuntu18.04(已经测试)
 ## Environment ubuntu18.04 (tested)
 
+## 更新
+脚本已经内置定时任务以及检测root权限
+
 ## 注意
 1. 最好 root权限运行
 2. 定时任务，请百度或者Google这里就不放命令了
