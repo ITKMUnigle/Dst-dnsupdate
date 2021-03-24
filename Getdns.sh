@@ -1,4 +1,18 @@
 #!/bin/bash
+
+#检测是否为root
+if [ `id -u` != 0 ] ; then
+    echo "需要ROOT权限！"
+    exit 1
+fi
+
+
+#创建文件夹
+mkdir -p /GetDNS
+
+#生成Getdns.sh
+cat>/GetDNS/Getdns.sh<<EOF
+#!/bin/bash
 #判断hostlist
 if [ ! -f "hostlist.txt" ];then
   #写入默认的hostlist
@@ -91,3 +105,26 @@ echo "源文件行数：$oldcount 删除行数：$(($oldcount-$delcount)) 总行
 #刷新dns
 echo "刷新dns"
 sudo /etc/init.d/nscd restart
+
+
+
+EOF
+
+#修改权限
+chmod 755 /GetDNS/Getdns.sh
+
+#每5小时执行一次
+grep -q Getdns.sh /etc/crontab
+if [ "$?" -eq "0" ] ; then
+    #计划任务已存在，什么也不做
+    echo "计划任务已存在"
+elif [ "$?" -eq "1" ] ; then
+    #计划任务不存在，添加计划任务
+    echo "* */5 * * * root /GetDNS/Getdns.sh" >> /etc/crontab
+    echo "计划任务已添加"
+else
+    #检测出错
+    echo "添加计划任务失败"
+fi
+
+echo "---执行完毕---"
